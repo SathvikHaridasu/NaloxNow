@@ -20,12 +20,12 @@
 
         #download .download-btn {
             display: block;
-            margin: 20px auto;
-            padding: 15px 30px;
-            font-size: 1.2em;
+            margin: 10px auto;
+            padding: 10px 20px;
+            font-size: 1em;
             border-radius: 5px;
             text-align: center;
-            width: 250px;
+            width: 150px;
         }
 
         #experience-timeline {
@@ -65,21 +65,173 @@
         /* Center the "Get NaloxNow" section */
         #download .container {
             display: flex;
-            justify-content: center;
+            flex-direction: row;
+            /* Arrange items horizontally */
+            justify-content: space-between;
+            /* Distribute space evenly */
             align-items: center;
+            /* Vertically align items */
+            padding: 20px;
+            /* Add some padding for spacing */
+            max-width: 800px;
+            /* Limit the maximum width */
+            margin: 0 auto;
+            /* Center the container */
+        }
+
+        #download .text-side {
+            text-align: left;
+            /* Align text to the left */
+            font-size: 1.5em;
+            /* Adjust font size as needed */
+            font-weight: bold;
+        }
+
+        #download .buttons-side {
+            display: flex;
             flex-direction: column;
+            /* Arrange buttons vertically */
+            align-items: flex-end;
+            /* Align buttons to the right */
         }
 
         #download .row {
-            width: 100%;
-            /* Ensure the row takes full width to center properly */
-            max-width: 600px;
-            /* Limit the maximum width of the row */
+            width: auto;
+            /* Adjust width to content */
+            max-width: none;
+            /* Remove max width */
         }
 
         #download .col-sm-6 {
             text-align: center;
             /* Center the download buttons */
+        }
+
+        /* Logo styles */
+        #logo-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #logo-container img {
+            width: 100px;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* FAQ Styles */
+        #faq {
+            padding: 50px 0;
+            background-color: #f9f9f9;
+        }
+
+        #faq h2 {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        #faq .faq-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        #faq .faq-column {
+            width: 48%;
+            /* Adjust for margins */
+            margin-bottom: 15px;
+        }
+
+        #faq details {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #fff;
+        }
+
+        #faq summary {
+            font-weight: bold;
+            cursor: pointer;
+            padding: 10px;
+            position: relative;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #faq summary::after {
+            content: '+';
+            position: absolute;
+            right: 10px;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        #faq details[open] summary::after {
+            content: '-';
+        }
+
+        #faq details p {
+            padding: 10px;
+            margin: 0;
+        }
+
+        /* Center Get NaloxNow Image */
+        #download .heading {
+            text-align: center;
+        }
+
+        #download .heading img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            /* Make the image responsive */
+            height: auto;
+            /* Maintain aspect ratio */
+        }
+
+        /* Report Button */
+        .report-button {
+            display: block;
+            /* Changed from inline-block to block */
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            background-color: #D32F2F;
+            /* Emergency Red color */
+            color: white;
+            text-decoration: none;
+            /* Remove underline */
+            cursor: pointer;
+            margin-top: 10px;
+            /* Add some space */
+            width: fit-content;
+            /* Adjust width to content */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .report-button:hover {
+            background-color: #B71C1C;
+            /* Darker red on hover */
+        }
+
+        /* Lead Content Adjustments */
+        #lead-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        #lead-content a.btn-rounded-white {
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -107,6 +259,10 @@
                 <a href="#contact">Contact</a>
             </li>
         </ul>
+        <div id="logo-container">
+            <img src="images/NaloxNow.png" alt="NaloxNow Logo">
+            <img src="images/HackCanada Logo.png" alt="HackCanada Logo">
+        </div>
     </header>
     <!-- End header -->
 
@@ -115,6 +271,7 @@
             <h1>NaloxNow</h1>
             <h2>Helping Canadians combat the opioid crisis with real-time naloxone kit mapping, emergency navigation, and AI-powered overdose response.</h2>
             <a href="maps.html" class="btn-rounded-white">Find Naloxone Kit Near Me</a>
+            <a href="report.html" class="report-button">REPORT NALOXONE KITS NEAR ME</a>
         </div>
         <!-- End #lead-content -->
 
@@ -152,10 +309,10 @@
         </div>
     </div>
     <!-- End #about -->
+
     <div id="experience" class="background-alt">
         <h2 class="heading">Emergency Button Workflow</h2>
         <div id="experience-timeline">
-
             <div class="workflow-step">
                 <div class="step-number">1</div>
                 <h3 class="step-title">User Triggers Emergency Alert</h3>
@@ -222,25 +379,28 @@
     <!-- End #experience -->
 
     <div id="download">
-        <h2 class="heading">Get NaloxNow</h2>
         <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <a href="#" class="download-btn shadow-large">
-                        <i class="fa fa-apple"></i>
-                        <span>Download for iOS</span>
-                    </a>
-                </div>
-                <div class="col-sm-6">
-                    <a href="#" class="download-btn shadow-large">
-                        <i class="fa fa-android"></i>
-                        <span>Download for Android</span>
-                    </a>
+            <div class="text-side">Get NaloxNow</div>
+            <div class="buttons-side">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <a href="#" class="download-btn shadow-large">
+                            <i class="fa fa-apple"></i>
+                            <span>Download for iOS</span>
+                        </a>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="#" class="download-btn shadow-large">
+                            <i class="fa fa-android"></i>
+                            <span>Download for Android</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- End #download -->
+
     <div id="contact">
         <h2 class="heading">Get in Touch</h2>
         <div id="contact-form">

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Report Naloxone Kit</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
+    <!-- Link to your existing CSS file -->
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            flex: 1;
+            /* Fill remaining space */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .back-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            background-color: #3498db;
+            /* Blue color */
+            color: white;
+            text-decoration: none;
+            /* Remove underline */
+            cursor: pointer;
+            text-align: center;
+            width: 150px;
+        }
+
+        .back-button:hover {
+            background-color: #2980b9;
+            /* Darker blue on hover */
+        }
+
+        /* Camera Styles */
+        #camera-container {
+            margin-bottom: 20px;
+            text-align: center;
+            width: 45%;
+            /* Adjust as needed */
+        }
+
+        #camera-stream {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #captured-image {
+            max-width: 100%;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #location-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #submit-button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            background-color: #3498db;
+            /* Blue */
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        #submit-button:hover {
+            background-color: #2980b9;
+            /* Darker blue */
+        }
+
+        /* Instructions Styles */
+        #instructions {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            width: 45%;
+            /* Adjust as needed */
+        }
+
+        #instructions h2 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        #instructions ol {
+            padding-left: 20px;
+        }
+
+        /* Menu Styles */
+        #menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: #333;
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            /* Optional shadow */
+        }
+
+        #menu li {
+            padding: 15px 0;
+            /* Adjust top and bottom padding */
+        }
+
+        #menu li a {
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            /* Add padding around the text */
+            display: block;
+            /* Make the entire area clickable */
+        }
+
+        #menu li a:hover {
+            background-color: #555;
+            /* Darker background on hover */
+        }
+
+        .report-side {
+            width: 50%;
+            padding-right: 20px;
+            box-sizing: border-box;
+        }
+
+        #capture-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            /* Green */
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        #camera-stream {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul id="menu" class="shadow">
+            <li>
+                <a href="index.html#about">About</a>
+            </li>
+            <li>
+                <a href="index.html#experience">Features</a>
+            </li>
+            <li>
+                <a href="index.html#download">Download</a>
+            </li>
+            <li>
+                <a href="index.html#contact">Contact</a>
+            </li>
+        </ul>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="report-side">
+                <h1>Report Naloxone Kit</h1>
+
+                <div id="instructions">
+                    <h2>Reporting Instructions:</h2>
+                    <ol>
+                        <li><strong>Step 1: Take a Photo</strong> - Use the camera below to take a clear photo of the
+                            naloxone kit.</li>
+                        <li><strong>Step 2: Enter Details</strong> - Provide the location details of the kit in the text
+                            box.</li>
+                        <li><strong>Step 3: Submit Report</strong> - Click the "Submit Report" button to send the
+                            information.</li>
+                    </ol>
+                </div>
+
+                <div id="camera-container">
+                    <video id="camera-stream" autoplay playsinline></video>
+                    <button id="capture-button">Capture Photo</button>
+                    <canvas id="captured-image" style="display:none;"></canvas>
+                    <img id="display-image" style="max-width:100%; display:none;">
+                </div>
+
+                <div>
+                    <label for="location-input">Location Details:</label>
+                    <input type="text" id="location-input" placeholder="Enter location description">
+                </div>
+
+                <button id="submit-button">Submit Report</button>
+            </div>
+        </div>
+        <a href="index.html" class="back-button">Back to Main Page</a>
+    </main>
+
+    <footer>
+        <p>Copyright &copy; <span id="current-year">2025</span> NaloxNow</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cameraStream = document.getElementById('camera-stream');
+            const captureButton = document.getElementById('capture-button');
+            const capturedImageCanvas = document.getElementById('captured-image');
+            const displayImage = document.getElementById('display-image');
+            const locationInput = document.getElementById('location-input');
+            const submitButton = document.getElementById('submit-button');
+            const context = capturedImageCanvas.getContext('2d');
+
+            // Access the camera
+            async function startCamera() {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
+                    cameraStream.srcObject = stream;
+                } catch (error) {
+                    console.error('Error accessing camera:', error);
+                    alert('Error accessing camera. Please make sure you have a camera and permissions are granted.');
+                }
+            }
+
+            // Capture a photo
+            captureButton.addEventListener('click', function () {
+                capturedImageCanvas.width = cameraStream.videoWidth;
+                capturedImageCanvas.height = cameraStream.videoHeight;
+                context.drawImage(cameraStream, 0, 0, cameraStream.videoWidth, cameraStream.videoHeight);
+
+                // Display the captured image
+                const imageDataURL = capturedImageCanvas.toDataURL('image/png');
+                displayImage.src = imageDataURL;
+                displayImage.style.display = 'block';
+
+                // Stop the camera stream
+                cameraStream.srcObject.getTracks().forEach(track => track.stop());
+                cameraStream.style.display = 'none';
+                captureButton.style.display = 'none';
+            });
+
+            // Submit the report
+            submitButton.addEventListener('click', function () {
+                const location = locationInput.value;
+                const imageData = displayImage.src; // Get the data URL of the image
+
+                if (!imageData || !location) {
+                    alert('Please capture a photo and enter the location details.');
+                    return;
+                }
+
+                // Here, you would typically send the imageData and location to a server
+                // For this example, we'll just log the data
+                console.log('Image Data:', imageData);
+                console.log('Location:', location);
+
+                alert('Report submitted! (Data logged to console)');
+                // You can add code here to reset the form or redirect the user
+            });
+
+            // Start the camera when the page loads
+            startCamera();
+        });
+    </script>
+</body>
+
+</html>
