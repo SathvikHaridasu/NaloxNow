@@ -108,6 +108,12 @@
             display: block;
             margin-bottom: 10px;
         }
+
+        /* Make the map area clickable */
+        #map-link {
+            display: block;
+            /* Ensure the link takes up the full area */
+        }
     </style>
 </head>
 
@@ -130,6 +136,8 @@
         <div id="logo-container">
             <img src="images/NaloxNow.png" alt="NaloxNow Logo">
             <img src="images/HackCanada Logo.png" alt="HackCanada Logo">
+            <img src="images/Google.png" alt="Google Logo">
+            <img src="images/orkes.png" alt="Orkes Logo">
         </div>
     </header>
     <!-- End header -->
@@ -137,8 +145,10 @@
     <div id="map">
         <h2 class="heading">Find Naloxone Kit Near Me</h2>
         <div style="position: relative;">
-            <img src="images/map.png" alt="Map" style="width: 100%; height: auto;">
-            <img id="location-icon" src="images/Location.png" alt="Location Icon">
+            <a id="map-link" href="https://maps.app.goo.gl/99pMAT9kJ2LxmshV8" target="_blank">
+                <img src="images/map.png" alt="Map" style="width: 100%; height: auto;">
+                <img id="location-icon" src="images/Location.png" alt="Location Icon">
+            </a>
         </div>
         <a href="https://maps.app.goo.gl/99pMAT9kJ2LxmshV8" class="start-directions-btn" target="_blank">Start
             Directions</a>

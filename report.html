@@ -19,82 +19,76 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            align-items: center;
+            /* Center horizontally */
+            text-align: center;
+            /* Center text within elements by default */
         }
 
         header {
-            background-color: #333;
-            color: white;
-            padding: 1em 0;
-            text-align: center;
+            width: 100%;
+            /* Make the header full width */
+            position: relative;
+            /* For absolute positioning of logos */
         }
 
         main {
             padding: 20px;
             flex: 1;
             /* Fill remaining space */
+            width: 80%;
+            /* Limit main content width */
+            max-width: 800px;
+            /* Set a maximum width */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Center content horizontally */
         }
 
         h1 {
-            text-align: center;
             margin-bottom: 20px;
         }
 
-        p {
-            text-align: center;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .back-button {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            font-size: 1em;
+        #instructions {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
             border-radius: 5px;
-            background-color: #3498db;
-            /* Blue color */
-            color: white;
-            text-decoration: none;
-            /* Remove underline */
-            cursor: pointer;
+            background-color: #f9f9f9;
+            text-align: left;
+            /* Restore left alignment for instructions */
+            width: 100%;
+            /* Take full width of main */
+        }
+
+        #instructions h2 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
             text-align: center;
-            width: 150px;
+            /* Center instruction titles */
         }
 
-        .back-button:hover {
-            background-color: #2980b9;
-            /* Darker blue on hover */
+        #instructions ol {
+            padding-left: 20px;
         }
 
-        /* Camera Styles */
         #camera-container {
             margin-bottom: 20px;
-            text-align: center;
-            width: 45%;
-            /* Adjust as needed */
+            width: 100%;
+            /* Take full width of main */
+            max-width: 600px;
+            /* Limit video size */
         }
 
         #camera-stream {
             max-width: 100%;
             border: 1px solid #ddd;
             border-radius: 5px;
+            display: block;
+            /* Remove extra space below video */
+            margin: 0 auto;
+            /* Center the video */
         }
 
         #captured-image {
@@ -102,6 +96,10 @@
             margin-top: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
+            display: block;
+            /* Remove extra space below image */
+            margin: 0 auto;
+            /* Center the image */
         }
 
         #location-input {
@@ -112,6 +110,16 @@
             border-radius: 5px;
         }
 
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Center buttons vertically */
+            width: 100%;
+            /* Take full width of main */
+        }
+
+        #capture-button,
         #submit-button {
             padding: 10px 20px;
             font-size: 1em;
@@ -121,34 +129,46 @@
             color: white;
             cursor: pointer;
             border: none;
+            margin-top: 10px;
+            /* Add space between buttons */
         }
 
+        #capture-button:hover,
         #submit-button:hover {
             background-color: #2980b9;
             /* Darker blue */
         }
 
-        /* Instructions Styles */
-        #instructions {
-            margin-bottom: 20px;
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            width: 100%;
+        }
+
+        /* Logo styles */
+        #logo-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: white;
             padding: 10px;
-            border: 1px solid #ddd;
             border-radius: 5px;
-            background-color: #f9f9f9;
-            width: 45%;
-            /* Adjust as needed */
+            text-align: center;
+            /* Center the images horizontally */
         }
 
-        #instructions h2 {
-            font-size: 1.2em;
+        #logo-container img {
+            width: 100px;
+            height: auto;
+            display: block;
             margin-bottom: 10px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        #instructions ol {
-            padding-left: 20px;
-        }
-
-        /* Menu Styles */
+        /* Menu Styles (From Main Page) */
         #menu {
             list-style: none;
             padding: 0;
@@ -180,28 +200,25 @@
             /* Darker background on hover */
         }
 
-        .report-side {
-            width: 50%;
-            padding-right: 20px;
-            box-sizing: border-box;
-        }
-
-        #capture-button {
-            margin-top: 10px;
+        .back-button {
+            display: block;
+            margin: 20px auto;
             padding: 10px 20px;
             font-size: 1em;
             border-radius: 5px;
-            background-color: #4CAF50;
-            /* Green */
+            background-color: #3498db;
+            /* Blue color */
             color: white;
+            text-decoration: none;
+            /* Remove underline */
             cursor: pointer;
-            border: none;
+            text-align: center;
+            width: 150px;
         }
 
-        #camera-stream {
-            max-width: 100%;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+        .back-button:hover {
+            background-color: #2980b9;
+            /* Darker blue on hover */
         }
     </style>
 </head>
@@ -222,40 +239,43 @@
                 <a href="index.html#contact">Contact</a>
             </li>
         </ul>
+        <div id="logo-container">
+            <img src="images/NaloxNow.png" alt="NaloxNow Logo">
+            <img src="images/HackCanada Logo.png" alt="HackCanada Logo">
+            <img src="images/Google.png" alt="Google Logo">
+            <img src="images/orkes.png" alt="Orkes Logo">
+        </div>
     </header>
 
     <main>
-        <div class="container">
-            <div class="report-side">
-                <h1>Report Naloxone Kit</h1>
+        <h1>Report Naloxone Kit</h1>
 
-                <div id="instructions">
-                    <h2>Reporting Instructions:</h2>
-                    <ol>
-                        <li><strong>Step 1: Take a Photo</strong> - Use the camera below to take a clear photo of the
-                            naloxone kit.</li>
-                        <li><strong>Step 2: Enter Details</strong> - Provide the location details of the kit in the text
-                            box.</li>
-                        <li><strong>Step 3: Submit Report</strong> - Click the "Submit Report" button to send the
-                            information.</li>
-                    </ol>
-                </div>
-
-                <div id="camera-container">
-                    <video id="camera-stream" autoplay playsinline></video>
-                    <button id="capture-button">Capture Photo</button>
-                    <canvas id="captured-image" style="display:none;"></canvas>
-                    <img id="display-image" style="max-width:100%; display:none;">
-                </div>
-
-                <div>
-                    <label for="location-input">Location Details:</label>
-                    <input type="text" id="location-input" placeholder="Enter location description">
-                </div>
-
-                <button id="submit-button">Submit Report</button>
-            </div>
+        <div id="instructions">
+            <h2>Reporting Instructions:</h2>
+            <ol>
+                <li><strong>Step 1: Take a Photo</strong> - Use the camera below to take a clear photo of the
+                    naloxone kit.</li>
+                <li><strong>Step 2: Enter Details</strong> - Provide the location details of the kit in the text
+                    box.</li>
+                <li><strong>Step 3: Submit Report</strong> - Click the "Submit Report" button to send the
+                    information.</li>
+            </ol>
         </div>
+
+        <div id="camera-container">
+            <video id="camera-stream" autoplay playsinline></video>
+            <canvas id="captured-image" style="display:none;"></canvas>
+            <img id="display-image" style="max-width:100%; display:none;">
+        </div>
+
+        <label for="location-input">Location Details:</label>
+        <input type="text" id="location-input" placeholder="Enter location description">
+
+        <div class="button-container">
+            <button id="capture-button">Capture Photo</button>
+            <button id="submit-button">Submit Report</button>
+        </div>
+
         <a href="index.html" class="back-button">Back to Main Page</a>
     </main>
 
@@ -305,7 +325,6 @@
             submitButton.addEventListener('click', function () {
                 const location = locationInput.value;
                 const imageData = displayImage.src; // Get the data URL of the image
-
                 if (!imageData || !location) {
                     alert('Please capture a photo and enter the location details.');
                     return;
