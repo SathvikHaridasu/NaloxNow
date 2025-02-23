@@ -13,31 +13,16 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <style>
-        .chat-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
         .chat-window {
-            display: none;
+            display: block; /* Changed from 'none' to 'block' */
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: 300px;
+            width: 600px;
             background-color: white;
             border: 1px solid #ccc;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .chat-window.open {
-            display: block;
         }
 
         .chat-window .close {
@@ -108,11 +93,16 @@
             padding: 10px;
         }
     </style>
-    <script src="https://path/to/google/generative-ai-library.js"></script>
+    <script type="importmap">
+        {
+          "imports": {
+            "@google/generative-ai": "https://esm.run/@google/generative-ai"
+          }
+        }
+    </script>
 </head>
 
 <body>
-    <div class="chat-button">Chat</div>
     <div class="chat-window">
         <button class="close">X</button>
         <div class="chat"></div>
@@ -122,7 +112,7 @@
         </div>
     </div>
 
-    <script src="js/chatbot.js"></script>
+    <script type="module" src="js/chatbot.js"></script>
 </body>
 
 </html>
