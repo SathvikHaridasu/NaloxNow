@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>NaloxNow</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -117,6 +117,8 @@
             border-radius: 5px;
             text-align: center;
             /* Center the images horizontally */
+            display: flex;
+            flex-direction: column;
         }
 
         #logo-container img {
@@ -124,8 +126,6 @@
             height: auto;
             display: block;
             margin-bottom: 10px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         /* FAQ Styles */
@@ -202,7 +202,7 @@
 
         /* Report Button */
         .report-button {
-            display: inline-block;
+            display: block;
             padding: 10px 20px;
             font-size: 1em;
             border-radius: 5px;
@@ -221,45 +221,69 @@
             /* Darker blue on hover */
         }
 
-        /* Custom button styles */
-        .custom-button {
-            display: inline-block;
-            padding: 12px 24px;
+        /* Red Find Button */
+        .find-button {
+            display: block;
+            padding: 10px 20px;
             font-size: 1em;
             border-radius: 5px;
+            background-color: #D32F2F;
+            /* Red color */
+            color: white;
             text-decoration: none;
+            /* Remove underline */
             cursor: pointer;
             margin-top: 10px;
-            border: none;
-            /* Remove default border */
-            transition: background-color 0.3s ease;
-            /* Smooth transition for hover effect */
-            text-align: center;
-            /* Ensure text is centered */
+            /* Add some space */
         }
 
-        .report-naloxone-button {
-            background-color: white;
-            color: #3498db;
-            /* Blue text */
-            border: 2px solid #3498db;
-            /* Add a blue border */
-        }
-
-        .report-naloxone-button:hover {
-            background-color: #e7f3ff;
-            /* Lighter blue on hover */
-        }
-
-        .find-naloxone-button {
-            background-color: #e74c3c;
-            /* Red background */
-            color: white;
-        }
-
-        .find-naloxone-button:hover {
-            background-color: #c0392b;
+        .find-button:hover {
+            background-color: #B71C1C;
             /* Darker red on hover */
+        }
+
+        /* Lead Content Adjustments */
+        #lead-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        #lead-content a {
+            margin-bottom: 10px;
+            width: fit-content;
+            /* Adjust width to content */
+        }
+
+        #logo-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            /* Center the images horizontally */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* New styles for chatbot */
+        #menu li a.chatbot-link {
+            background-color: white;
+            /* Green background */
+            color: #3498DB;
+            /* White text */
+            border-radius: 5px;
+            /* Rounded corners */
+            padding: 10px 15px;
+            /* Padding for better appearance */
+        }
+
+        #menu li a.chatbot-link:hover {
+            /* background-color:; */
+            /* Darker green on hover */
         }
     </style>
 </head>
@@ -284,14 +308,15 @@
                 <a href="#download">Download</a>
             </li>
             <li>
+                <a href="chatbot.html" class="chatbot-link">Chatbot</a>
+            </li>
+            <li>
                 <a href="#contact">Contact</a>
             </li>
         </ul>
         <div id="logo-container">
             <img src="images/NaloxNow.png" alt="NaloxNow Logo">
             <img src="images/HackCanada Logo.png" alt="HackCanada Logo">
-            <img src="images/Google.png" alt="Google Logo">
-            <img src="images/orkes.png" alt="Orkes Logo">
         </div>
     </header>
     <!-- End header -->
@@ -300,14 +325,13 @@
         <div id="lead-content">
             <h1>NaloxNow</h1>
             <h2>Helping Canadians combat the opioid crisis with real-time naloxone kit mapping, emergency navigation, and AI-powered overdose response.</h2>
-            <!-- Custom styled buttons -->
-            <a href="report.html" class="custom-button report-naloxone-button">REPORT NALOXONE KITS NEAR ME</a>
-            <a href="maps.html" class="custom-button find-naloxone-button">FIND NALOXONE KITS NEAR ME</a>
+            <a href="report.html" class="report-button">REPORT NALOXONE KITS NEAR ME</a>
+            <a href="maps.html" class="find-button">Find Naloxone Kit Near Me</a>
         </div>
         <!-- End #lead-content -->
 
         <div id="lead-overlay"></div>
-        <!-- End #lead-overlay -->
+
         <div id="lead-down">
             <span>
                 <i class="fa fa-chevron-down" aria-hidden="true"></i>
@@ -431,7 +455,7 @@
     <!-- End #download -->
 
     <div id="contact">
-        <h2 class="heading">Contact Us For Inquiries</h2>
+        <h2 class="heading">Get in Touch</h2>
         <div id="contact-form">
             <form method="POST" action="https://formspree.io/f/xbldelbb">
                 <input type="hidden" name="_subject" value="Contact request from personal website" />
