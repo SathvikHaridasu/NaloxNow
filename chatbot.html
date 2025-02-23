@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NaloxNow Chatbot</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        .chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .chat-window {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-window.open {
+            display: block;
+        }
+
+        .chat-window .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .chat-window .chat {
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .chat-window .input-area {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+
+        .chat-window .input-area input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .chat-window .input-area button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .chat-window .user, .chat-window .model {
+            margin-bottom: 10px;
+        }
+
+        .chat-window .user p, .chat-window .model p {
+            margin: 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .chat-window .user p {
+            background-color: #f1f1f1;
+        }
+
+        .chat-window .model p {
+            background-color: #e1f5fe;
+        }
+
+        .chat-window .loader {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .chat-window .error {
+            color: red;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+    <script src="https://path/to/google/generative-ai-library.js"></script>
+</head>
+
+<body>
+    <div class="chat-button">Chat</div>
+    <div class="chat-window">
+        <button class="close">X</button>
+        <div class="chat"></div>
+        <div class="input-area">
+            <input type="text" placeholder="Type your message here...">
+            <button>Send</button>
+        </div>
+    </div>
+
+    <script src="js/chatbot.js"></script>
+</body>
+
+</html>
