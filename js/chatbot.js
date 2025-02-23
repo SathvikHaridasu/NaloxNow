@@ -134,7 +134,7 @@ Chatbot: “I understand your concerns. Naloxone is very effective at reversing 
 
 `;
 
-const API_KEY = "AIzaSyDUJke5OiOP5PQN6HkzCWUV3ALbsx9f4Rw";
+const API_KEY = "Whatchu lookin at";
 const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ 
     model: "gemini-1.5-pro",
