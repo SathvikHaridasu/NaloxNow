@@ -23,10 +23,13 @@
         /* Static position for location icon */
         #location-icon {
             position: absolute;
-            top: 50%; /* Adjust as needed */
-            left: 50%; /* Adjust as needed */
+            top: 50%;
+            /* Adjust as needed */
+            left: 50%;
+            /* Adjust as needed */
             transform: translate(-50%, -50%);
-            width: auto; /* Revert to original size */
+            width: auto;
+            /* Revert to original size */
             height: auto;
         }
 
@@ -41,6 +44,53 @@
         #mobile-menu-close {
             display: none;
         }
+
+        /* Style for the Start Directions button */
+        .start-directions-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            text-align: center;
+            width: 250px;
+            background-color: #4CAF50;
+            /* Green */
+            color: white;
+            text-decoration: none;
+            /* Remove underline */
+            cursor: pointer;
+        }
+
+        .start-directions-btn:hover {
+            background-color: #367c39;
+            /* Darker green on hover */
+        }
+
+        /* Style for the Go Back button */
+        .go-back-btn {
+            display: block;
+            margin: 10px auto;
+            /* Reduced margin */
+            padding: 10px 20px;
+            /* Reduced padding */
+            font-size: 1em;
+            /* Reduced font size */
+            border-radius: 5px;
+            text-align: center;
+            width: 200px;
+            /* Reduced width */
+            background-color: #3498db;
+            /* Blue */
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .go-back-btn:hover {
+            background-color: #23628b;
+            /* Darker blue on hover */
+        }
     </style>
 </head>
 
@@ -48,41 +98,20 @@
     <header>
         <ul id="menu" class="shadow">
             <li>
-                <a href="#about">About</a>
+                <a href="index.html#about">About</a>
             </li>
             <li>
-                <a href="#experience">Features</a>
+                <a href="index.html#experience">Features</a>
             </li>
             <li>
-                <a href="#download">Download</a>
+                <a href="index.html#download">Download</a>
             </li>
             <li>
-                <a href="#contact">Contact</a>
+                <a href="index.html#contact">Contact</a>
             </li>
         </ul>
     </header>
     <!-- End header -->
-
-    <!-- Add the same sections as in index.html -->
-    <div id="about">
-        <!-- ...existing code from index.html... -->
-    </div>
-    <!-- End #about -->
-
-    <div id="experience" class="background-alt">
-        <!-- ...existing code from index.html... -->
-    </div>
-    <!-- End #experience -->
-
-    <div id="download">
-        <!-- ...existing code from index.html... -->
-    </div>
-    <!-- End #download -->
-
-    <div id="contact">
-        <!-- ...existing code from index.html... -->
-    </div>
-    <!-- End #contact -->
 
     <div id="map">
         <h2 class="heading">Find Naloxone Kit Near Me</h2>
@@ -90,8 +119,26 @@
             <img src="images/map.png" alt="Map" style="width: 100%; height: auto;">
             <img id="location-icon" src="images/Location.png" alt="Location Icon">
         </div>
+        <a href="https://maps.app.goo.gl/99pMAT9kJ2LxmshV8" class="start-directions-btn" target="_blank">Start
+            Directions</a>
+        <a href="index.html" class="go-back-btn">Go Back to Main Page</a>
     </div>
     <!-- End #map -->
+
+    <!-- Add the "Get in Touch" section -->
+    <div id="contact">
+        <h2 class="heading">Get in Touch</h2>
+        <div id="contact-form">
+            <form method="POST" action="https://formspree.io/f/xbldelbb">
+                <input type="hidden" name="_subject" value="Contact request from personal website" />
+                <input type="email" name="_replyto" placeholder="Your email" required>
+                <textarea name="message" placeholder="Your message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+        <!-- End #contact-form -->
+    </div>
+    <!-- End #contact -->
 
     <footer>
         <div class="container">
