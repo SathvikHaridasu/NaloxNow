@@ -5,13 +5,83 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My Portfolio</title>
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>NaloxNow</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    <style>
+        /* Add custom styles here */
+        .heading {
+            text-align: center;
+        }
+
+        #download .download-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            text-align: center;
+            width: 250px;
+        }
+
+        #experience-timeline {
+            padding-left: 20px;
+            position: relative;
+        }
+
+        #experience-timeline div {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        #experience-timeline h3 {
+            font-size: 1.2em;
+        }
+
+        #experience-timeline p {
+            margin-left: 40px;
+        }
+
+        #experience-timeline .workflow-step {
+            margin-bottom: 30px;
+        }
+
+        #experience-timeline .step-number {
+            font-size: 1.5em;
+            font-weight: bold;
+            position: absolute;
+            left: -40px;
+            top: 0;
+        }
+
+        #experience-timeline .step-title {
+            font-weight: bold;
+        }
+
+        /* Center the "Get NaloxNow" section */
+        #download .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #download .row {
+            width: 100%;
+            /* Ensure the row takes full width to center properly */
+            max-width: 600px;
+            /* Limit the maximum width of the row */
+        }
+
+        #download .col-sm-6 {
+            text-align: center;
+            /* Center the download buttons */
+        }
+    </style>
 </head>
 
 <body>
@@ -28,16 +98,10 @@
                 <a href="#about">About</a>
             </li>
             <li>
-                <a href="#experience">Experience</a>
+                <a href="#experience">Features</a>
             </li>
             <li>
-                <a href="#education">Education</a>
-            </li>
-            <li>
-                <a href="#projects">Projects</a>
-            </li>
-            <li>
-                <a href="#skills">Skills</a>
+                <a href="#download">Download</a>
             </li>
             <li>
                 <a href="#contact">Contact</a>
@@ -48,9 +112,9 @@
 
     <div id="lead">
         <div id="lead-content">
-            <h1>Ryan Fitzgerald</h1>
-            <h2>Software Engineer</h2>
-            <a href="#" class="btn-rounded-white">Download Resume</a>
+            <h1>NaloxNow</h1>
+            <h2>Helping Canadians combat the opioid crisis with real-time naloxone kit mapping, emergency navigation, and AI-powered overdose response.</h2>
+            <a href="maps.html" class="btn-rounded-white">Find Naloxone Kit Near Me</a>
         </div>
         <!-- End #lead-content -->
 
@@ -68,158 +132,117 @@
     <div id="about">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <h2 class="heading">About Me</h2>
+                <div class="col-md-12">
+                    <h2 class="heading">Why NaloxNow?</h2>
                 </div>
                 <div class="col-md-8">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat. Donec
-                        eu vehicula neque. Donec viverra lorem nunc, tempus euismod eros sollicitudin ut. Quisque et tincidunt libero. Donec id pharetra justo. Proin euismod lacinia dolor, eu scelerisque justo tempus pharetra. Vivamus nunc justo, finibus
-                        ut nisl sed, euismod rhoncus nulla. Proin sed magna egestas, egestas ante et, congue eros. In consequat, mauris dapibus tincidunt suscipit, ex libero aliquet diam, at maximus risus enim non leo.
+                        NaloxNow is designed to address one of Canada’s most urgent public health challenges. By providing real-time access to naloxone kits, the app empowers communities to take action, reduce harm, and save lives.
                     </p>
+                    <ul>
+                        <li>Supporting At-Risk Individuals – Rapid access to emergency resources for those in need.</li>
+                        <li>Emergency Navigation – Find and reach naloxone kits quickly during a crisis.</li>
+                        <li>AI-Powered Assistance – Get real-time guidance on overdose response.</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <img src="images/homeless.jpg" alt="Homeless person" style="width: 100%; height: auto;">
                 </div>
             </div>
         </div>
     </div>
     <!-- End #about -->
-
     <div id="experience" class="background-alt">
-        <h2 class="heading">Experience</h2>
+        <h2 class="heading">Emergency Button Workflow</h2>
         <div id="experience-timeline">
-            <div data-date="September 2015 – September 2016">
-                <h3>Employer Name</h3>
-                <h4>Job Title</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
-                </p>
+
+            <div class="workflow-step">
+                <div class="step-number">1</div>
+                <h3 class="step-title">User Triggers Emergency Alert</h3>
+                <p><strong>Action:</strong> The user presses the "Need Help Now" button in the app.</p>
+                <ul>
+                    <li>App retrieves the user's live location via GPS.</li>
+                    <li>A confirmation pop-up appears (optional, if accidental press needs to be avoided).</li>
+                    <li>The app immediately sends data to Google Workflows to begin the emergency process.</li>
+                </ul>
             </div>
 
-            <div data-date="September 2015 – September 2016">
-                <h3>Employer Name</h3>
-                <h4>Job Title</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
-                </p>
+            <div class="workflow-step">
+                <div class="step-number">2</div>
+                <h3 class="step-title">Contact Emergency Contacts</h3>
+                <p><strong>Action:</strong> Google Workflows sends an automated alert to all of the user’s saved
+                    emergency contacts.</p>
+                <ul>
+                    <li>A text message (SMS) &amp; email is sent to pre-saved emergency contacts with:
+                        <ul>
+                            <li>Live GPS location link</li>
+                            <li>Message: "[User's Name] has triggered an emergency alert and may need immediate
+                                assistance. Click the link for their real-time location."</li>
+                        </ul>
+                    </li>
+                    <li>Optional: Push notification to contacts who also have the NaloxNow app.</li>
+                </ul>
             </div>
 
-            <div data-date="September 2015 – September 2016">
-                <h3>Employer Name</h3>
-                <h4>Job Title</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
-                </p>
+            <div class="workflow-step">
+                <div class="step-number">3</div>
+                <h3 class="step-title">Call 911 &amp; Share Live Location</h3>
+                <p><strong>Action:</strong> The app automatically dials 911 and shares the user's location.</p>
+                <ul>
+                    <li>A Google Cloud Function triggers an automated voice call to 911.</li>
+                    <li>Text-to-speech message plays:
+                        <ul>
+                            <li>"This is an automated emergency alert from the NaloxNow app. A user has triggered an
+                                overdose alert at [live location]. Please send immediate assistance."</li>
+                        </ul>
+                    </li>
+                    <li>If the user cannot speak, the dispatcher already has the live location link.</li>
+                </ul>
             </div>
+
+            <div class="workflow-step">
+                <div class="step-number">4</div>
+                <h3 class="step-title">Display On-Screen Overdose Response Guidance</h3>
+                <p><strong>Action:</strong> The app provides immediate, step-by-step instructions on how to handle an
+                    overdose situation.</p>
+                <ul>
+                    <li>The AI Chatbot opens automatically and provides:
+                        <ul>
+                            <li>Naloxone usage instructions</li>
+                            <li>Basic first-aid steps</li>
+                            <li>What to do while waiting for help</li>
+                        </ul>
+                    </li>
+                    <li>If others are nearby, they can follow the steps while help arrives.</li>
+                </ul>
+            </div>
+
         </div>
     </div>
     <!-- End #experience -->
 
-    <div id="education">
-        <h2 class="heading">Education</h2>
-        <div class="education-block">
-            <h3>University of Ottawa</h3>
-            <span class="education-date">Sept 2016 - Sept 2017</span>
-            <h4>Bachelor of Science in Computer Science</h4>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
-            </p>
-        </div>
-        <!-- End .education-block -->
-
-        <div class="education-block">
-            <h3>University of Ottawa</h3>
-            <span class="education-date">Sept 2016 - Sept 2017</span>
-            <h4>Bachelor of Science in Computer Science</h4>
-            <ul>
-                <li>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </li>
-                <li>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </li>
-                <li>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </li>
-            </ul>
-        </div>
-        <!-- End .education-block -->
-    </div>
-    <!-- End #education -->
-
-    <div id="projects" class="background-alt">
-        <h2 class="heading">Projects</h2>
+    <div id="download">
+        <h2 class="heading">Get NaloxNow</h2>
         <div class="container">
             <div class="row">
-                <div class="project shadow-large">
-                    <div class="project-image">
-                        <img src="images/project.jpg" />
-                    </div>
-                    <!-- End .project-image -->
-                    <div class="project-info">
-                        <h3>Project Name Here</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
-                        </p>
-                        <a href="#">View Project</a>
-                    </div>
-                    <!-- End .project-info -->
+                <div class="col-sm-6">
+                    <a href="#" class="download-btn shadow-large">
+                        <i class="fa fa-apple"></i>
+                        <span>Download for iOS</span>
+                    </a>
                 </div>
-                <!-- End .project -->
-
-                <div class="project shadow-large">
-                    <div class="project-image">
-                        <img src="images/project.jpg" />
-                    </div>
-                    <!-- End .project-image -->
-                    <div class="project-info">
-                        <h3>Project Name Here</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
-                        </p>
-                        <a href="#">View Project</a>
-                    </div>
-                    <!-- End .project-info -->
+                <div class="col-sm-6">
+                    <a href="#" class="download-btn shadow-large">
+                        <i class="fa fa-android"></i>
+                        <span>Download for Android</span>
+                    </a>
                 </div>
-                <!-- End .project -->
             </div>
         </div>
     </div>
-    <!-- End #projects -->
-
-    <div id="skills">
-        <h2 class="heading">Skills</h2>
-        <ul>
-            <li>JavaScript</li>
-            <li>Python</li>
-            <li>Ruby</li>
-            <li>Go</li>
-            <li>Node.js</li>
-            <li>AngularJs</li>
-            <li>React</li>
-            <li>Elixir</li>
-            <li>Java</li>
-            <li>C</li>
-            <li>C#</li>
-            <li>C++</li>
-            <li>Ruby on Rails</li>
-            <li>JavaScript</li>
-            <li>Python</li>
-            <li>Ruby</li>
-            <li>Go</li>
-            <li>Node.js</li>
-            <li>AngularJs</li>
-            <li>React</li>
-            <li>Elixir</li>
-            <li>Java</li>
-            <li>C</li>
-            <li>C#</li>
-            <li>C++</li>
-            <li>Ruby on Rails</li>
-        </ul>
-    </div>
-    <!-- End #skills -->
-
+    <!-- End #download -->
     <div id="contact">
-        <h2>Get in Touch</h2>
+        <h2 class="heading">Get in Touch</h2>
         <div id="contact-form">
             <form method="POST" action="https://formspree.io/email@email.com">
                 <input type="hidden" name="_subject" value="Contact request from personal website" />
@@ -237,7 +260,7 @@
             <div class="row">
                 <div class="col-sm-5 copyright">
                     <p>
-                        Copyright &copy; <span id="current-year">2022</span> YOUR NAME
+                        Copyright &copy; <span id="current-year">2025</span> NaloxNow
                     </p>
                 </div>
                 <div class="col-sm-2 top">
@@ -246,26 +269,7 @@
                     </span>
                 </div>
                 <div class="col-sm-5 social">
-                    <ul>
-                        <li>
-                            <a href="https://github.com/" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://stackoverflow.com/" target="_blank"><i class="fa fa-stack-overflow" aria-hidden="true"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://linkedin.com/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://plus.google.com/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                        </li>
-                    </ul>
+                    <!-- Removed social media icons -->
                 </div>
             </div>
         </div>
