@@ -1,6 +1,6 @@
 # NaloxNow – Combating the Opioid Crisis with Real-Time Naloxone Access and AI-Powered Response
 
-![NaloxNow Logo](./images/NaloxNow.png)
+<img src="./images/NaloxNow.png" alt="NaloxNow Logo" width="200"/>
 
 NaloxNow is a life-saving mobile application designed to address Canada’s opioid crisis by providing real-time access to naloxone kits, emergency navigation, and AI-powered overdose response guidance. The app empowers individuals and communities to take immediate action during overdose emergencies, reducing harm and saving lives.
 
@@ -59,11 +59,6 @@ The opioid crisis is one of Canada’s most pressing public health challenges, w
 
 NaloxNow is more than just an app—it’s a movement. By downloading the app, uploading naloxone kit locations, and spreading awareness, you can help save lives and make a tangible difference in your community.
 
-**Download NaloxNow Today:**
-
-*   [Download for iOS](Replace with actual link)
-*   [Download for Android](Replace with actual link)
-
 ## Technical Details
 
 ### Tech Stack
@@ -79,7 +74,7 @@ NaloxNow is more than just an app—it’s a movement. By downloading the app, u
 1.  Clone the repository:
 
     ```
-    git clone https://github.com/your-username/NaloxNow.git
+    git clone https://github.com/SathvikHaridasu/NaloxoneNow
     ```
 
 2.  Install dependencies:
