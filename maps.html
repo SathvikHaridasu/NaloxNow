@@ -5,195 +5,653 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>NaloxNow - Map</title>
+    <title>NaloxNow - Find Naloxone Kits</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
     <style>
-        /* Cursor effect */
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #dc2626;
+            --secondary-dark: #b91c1c;
+            --accent-color: #10b981;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            cursor: url('images/cursor.png'), auto;
-            margin: 0;
-            padding: 0;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-light);
         }
 
-        /* Static position for location icon */
-        #location-icon {
-            position: absolute;
-            top: 50%;
-            /* Adjust as needed */
-            left: 50%;
-            /* Adjust as needed */
-            transform: translate(-50%, -50%);
-            width: auto;
-            /* Revert to original size */
-            height: auto;
-        }
-
-        /* Remove weird space at the top */
+        /* Header Styles */
         header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        #menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem 2rem;
+            list-style: none;
             margin: 0;
-            padding: 0;
         }
 
-        /* Remove blue and grey rectangles */
-        #mobile-menu-open,
-        #mobile-menu-close {
-            display: none;
+        #menu li {
+            margin: 0 1rem;
         }
 
-        /* Style for the Start Directions button */
-        .start-directions-btn {
-            display: block;
-            margin: 20px auto;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            border-radius: 5px;
-            text-align: center;
-            width: 250px;
-            background-color: #4CAF50;
-            /* Green */
-            color: white;
+        #menu a {
+            color: var(--text-primary);
             text-decoration: none;
-            /* Remove underline */
-            cursor: pointer;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
         }
 
-        .start-directions-btn:hover {
-            background-color: #367c39;
-            /* Darker green on hover */
+        #menu a:hover {
+            color: var(--primary-color);
+            background: rgba(37, 99, 235, 0.05);
+            transform: translateY(-2px);
         }
 
-        /* Style for the Go Back button */
-        .go-back-btn {
-            display: block;
-            margin: 10px auto;
-            /* Reduced margin */
-            padding: 10px 20px;
-            /* Reduced padding */
-            font-size: 1em;
-            /* Reduced font size */
-            border-radius: 5px;
-            text-align: center;
-            width: 200px;
-            /* Reduced width */
-            background-color: #3498db;
-            /* Blue */
-            color: white;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .go-back-btn:hover {
-            background-color: #23628b;
-            /* Darker blue on hover */
-        }
-
-        /* Logo styles */
+        /* Logo Container */
         #logo-container {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: white;
-            padding: 10px;
-            border-radius: 5px;
+            top: 1rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
         }
 
         #logo-container img {
-            width: 100px;
-            height: auto;
-            display: block;
-            margin-bottom: 10px;
+            height: 40px;
+            width: auto;
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
         }
 
-        /* Make the map area clickable */
-        #map-link {
+        #logo-container img:hover {
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+
+        /* Main Content */
+        .main-content {
+            min-height: calc(100vh - 200px);
+            padding: 3rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Map Section */
+        .map-section {
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
+        .map-container {
+            position: relative;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 2rem;
+        }
+
+        .map-wrapper {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .map-wrapper:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .map-image {
+            width: 100%;
+            height: auto;
             display: block;
-            /* Ensure the link takes up the full area */
+        }
+
+        .location-marker {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                box-shadow: var(--shadow-lg);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+                box-shadow: 0 0 0 20px rgba(220, 38, 38, 0.1);
+            }
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(37, 99, 235, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .map-wrapper:hover .map-overlay {
+            opacity: 1;
+        }
+
+        .overlay-text {
+            background: white;
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text-primary);
+            border: 2px solid #e5e7eb;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Info Section */
+        .info-section {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 3rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            padding: 2rem;
+            background: var(--bg-light);
+            border-radius: 1rem;
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .info-card h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .info-card i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .info-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 3rem;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .contact-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        #contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--bg-light);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            background: white;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-content p {
+            margin: 0;
+        }
+
+        .back-to-top {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 1.5rem;
+            }
+
+            .map-container {
+                padding: 1rem;
+            }
+
+            .info-section,
+            #contact {
+                padding: 2rem 1rem;
+            }
         }
     </style>
 </head>
 
 <body>
+    <!-- Header -->
     <header>
-        <ul id="menu" class="shadow">
-            <li>
-                <a href="index.html#about">About</a>
-            </li>
-            <li>
-                <a href="index.html#experience">Features</a>
-            </li>
-            <li>
-                <a href="index.html#download">Download</a>
-            </li>
-            <li>
-                <a href="index.html#contact">Contact</a>
-            </li>
+        <ul id="menu">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#experience">Features</a></li>
+            <li><a href="index.html#download">Download</a></li>
+            <li><a href="chatbot.html" target="_blank">
+                <i class="fas fa-robot"></i> AI Assistant
+            </a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
         <div id="logo-container">
             <img src="images/NaloxNow.png" alt="NaloxNow Logo">
             <img src="images/HackCanada Logo.png" alt="HackCanada Logo">
-            <img src="images/Google.png" alt="Google Logo">
-            <img src="images/orkes.png" alt="Orkes Logo">
+            <img src="images/Google.png" alt="Google">
+            <img src="images/orkes.png" alt="Orkes">
         </div>
     </header>
-    <!-- End header -->
 
-    <div id="map">
-        <h2 class="heading">Find Naloxone Kit Near Me</h2>
-        <div style="position: relative;">
-            <a id="map-link" href="https://maps.app.goo.gl/99pMAT9kJ2LxmshV8" target="_blank">
-                <img src="images/map.png" alt="Map" style="width: 100%; height: auto;">
-                <img id="location-icon" src="images/Location.png" alt="Location Icon">
-            </a>
-        </div>
-        <a href="https://maps.app.goo.gl/99pMAT9kJ2LxmshV8" class="start-directions-btn" target="_blank">Start
-            Directions</a>
-        <a href="index.html" class="go-back-btn">Go Back to Main Page</a>
-    </div>
-    <!-- End #map -->
-
-    <!-- Add the "Get in Touch" section -->
-    <div id="contact">
-        <h2 class="heading">Get in Touch</h2>
-        <div id="contact-form">
-            <form method="POST" action="https://formspree.io/f/xbldelbb">
-                <input type="hidden" name="_subject" value="Contact request from personal website" />
-                <input type="email" name="_replyto" placeholder="Your email" required>
-                <textarea name="message" placeholder="Your message" required></textarea>
-                <button type="submit">Send</button>
-            </form>
-        </div>
-        <!-- End #contact-form -->
-    </div>
-    <!-- End #contact -->
-
-    <footer>
+    <!-- Main Content -->
+    <div class="main-content">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-5 copyright">
-                    <p>
-                        Copyright &copy; <span id="current-year">2025</span> NaloxNow
-                    </p>
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">Find Naloxone Kits Near You</h1>
+                <p class="page-subtitle">Locate the nearest naloxone kits and emergency resources in your area. Click on the map to get directions.</p>
+            </div>
+
+            <!-- Map Section -->
+            <div class="map-section">
+                <div class="map-container">
+                    <div class="map-wrapper">
+                        <a href="https://maps.app.goo.gl/99pMAT9kJ2LxmshV8" target="_blank" style="display: block;">
+                            <img src="images/map.png" alt="Interactive Map" class="map-image">
+                            <div class="location-marker">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="map-overlay">
+                                <div class="overlay-text">
+                                    <i class="fas fa-external-link-alt"></i> Click to Open Map
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-                <div class="col-sm-2 top">
-                    <span id="to-top">
-                        <i class="fa fa-chevron-up" aria-hidden="true"></i>
-                    </span>
+                <div class="action-buttons">
+                    <a href="https://maps.app.goo.gl/99pMAT9kJ2LxmshV8" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-directions"></i>
+                        Get Directions
+                    </a>
+                    <a href="index.html" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Home
+                    </a>
                 </div>
-                <div class="col-sm-5 social">
-                    <!-- Removed social media icons -->
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2rem; font-weight: 700; color: var(--text-primary);">
+                    What You Need to Know
+                </h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>
+                            <i class="fas fa-clock"></i>
+                            Emergency Response
+                        </h3>
+                        <p>Naloxone kits are available 24/7 at many locations. In an emergency, call 911 immediately and administer naloxone if available.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>
+                            <i class="fas fa-shield-alt"></i>
+                            Free Access
+                        </h3>
+                        <p>Naloxone is available without a prescription in Canada. Many pharmacies and health centers provide it free of charge.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>
+                            <i class="fas fa-users"></i>
+                            Community Support
+                        </h3>
+                        <p>Local organizations and health departments often have naloxone distribution programs and training available.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>
+                            <i class="fas fa-phone"></i>
+                            Additional Resources
+                        </h3>
+                        <p>Contact your local health department or visit naloxone.ca for more information about availability in your area.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div id="contact">
+                <div class="contact-header">
+                    <h2>Get in Touch</h2>
+                    <p>Have questions about naloxone or need assistance? We're here to help.</p>
+                </div>
+                <div id="contact-form">
+                    <form method="POST" action="https://formspree.io/f/xbldelbb">
+                        <input type="hidden" name="_subject" value="Contact request from NaloxNow maps page" />
+                        <div class="form-group">
+                            <input type="email" name="_replyto" class="form-control" placeholder="Your email address" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" class="form-control" placeholder="Your message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
-    </footer>
-    <!-- End footer -->
+    </div>
 
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; <span id="current-year">2025</span> NaloxNow. All rights reserved.</p>
+                <a href="#" class="back-to-top" id="to-top">
+                    <i class="fas fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/scripts.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Smooth scrolling for anchor links
+            $('a[href^="#"]').on('click', function(event) {
+                var target = $(this.getAttribute('href'));
+                if (target.length) {
+                    event.preventDefault();
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top - 80
+                    }, 1000);
+                }
+            });
+
+            // Form submission feedback
+            $('#contact-form form').submit(function(e) {
+                var submitBtn = $(this).find('button[type="submit"]');
+                var originalText = submitBtn.html();
+                
+                submitBtn.html('<i class="fas fa-spinner fa-spin"></i> Sending...');
+                submitBtn.prop('disabled', true);
+                
+                setTimeout(function() {
+                    submitBtn.html(originalText);
+                    submitBtn.prop('disabled', false);
+                }, 3000);
+            });
+
+            // Update current year
+            $('#current-year').text(new Date().getFullYear());
+
+            // Add hover effects to info cards
+            $('.info-card').hover(
+                function() {
+                    $(this).find('i').css('transform', 'scale(1.2)');
+                },
+                function() {
+                    $(this).find('i').css('transform', 'scale(1)');
+                }
+            );
+        });
+    </script>
 </body>
 
 </html>

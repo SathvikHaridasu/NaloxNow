@@ -3,316 +3,817 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>NaloxNow</title>
+    <title>NaloxNow - Emergency Response App</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Add custom styles here */
-        .heading {
-            text-align: center;
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #dc2626;
+            --secondary-dark: #b91c1c;
+            --accent-color: #10b981;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         }
 
-        #download .download-btn {
-            display: block;
-            margin: 10px auto;
-            padding: 10px 20px;
-            font-size: 1em;
-            border-radius: 5px;
-            text-align: center;
-            width: 150px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        #experience-timeline {
-            padding-left: 20px;
-            position: relative;
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            overflow-x: hidden;
         }
 
-        #experience-timeline div {
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        #experience-timeline h3 {
-            font-size: 1.2em;
-        }
-
-        #experience-timeline p {
-            margin-left: 40px;
-        }
-
-        #experience-timeline .workflow-step {
-            margin-bottom: 30px;
-        }
-
-        #experience-timeline .step-number {
-            font-size: 1.5em;
-            font-weight: bold;
-            position: absolute;
-            left: -40px;
+        /* Header Styles */
+        header {
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
         }
 
-        #experience-timeline .step-title {
-            font-weight: bold;
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
         }
 
-        /* Center the "Get NaloxNow" section */
-        #download .container {
+        #menu {
             display: flex;
-            flex-direction: row;
-            /* Arrange items horizontally */
-            justify-content: space-between;
-            /* Distribute space evenly */
+            justify-content: center;
             align-items: center;
-            /* Vertically align items */
-            padding: 20px;
-            /* Add some padding for spacing */
-            max-width: 800px;
-            /* Limit the maximum width */
-            margin: 0 auto;
-            /* Center the container */
-        }
-
-        #download .text-side {
-            text-align: left;
-            /* Align text to the left */
-            font-size: 1.5em;
-            /* Adjust font size as needed */
-            font-weight: bold;
-        }
-
-        #download .buttons-side {
-            display: flex;
-            flex-direction: column;
-            /* Arrange buttons vertically */
-            align-items: flex-end;
-            /* Align buttons to the right */
-        }
-
-        #download .row {
-            width: auto;
-            /* Adjust width to content */
-            max-width: none;
-            /* Remove max width */
-        }
-
-        #download .col-sm-6 {
-            text-align: center;
-            /* Center the download buttons */
-        }
-
-        /* Logo styles */
-        #logo-container {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: white;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
-            /* Center the images horizontally */
-            display: flex;
-            flex-direction: column;
-        }
-
-        #logo-container img {
-            width: 100px;
-            height: auto;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        /* FAQ Styles */
-        #faq {
-            padding: 50px 0;
-            background-color: #f9f9f9;
-        }
-
-        #faq h2 {
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        #faq .faq-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-
-        #faq .faq-column {
-            width: 48%;
-            /* Adjust for margins */
-            margin-bottom: 15px;
-        }
-
-        #faq details {
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            background-color: #fff;
-        }
-
-        #faq summary {
-            font-weight: bold;
-            cursor: pointer;
-            padding: 10px;
-            position: relative;
+            padding: 1rem 2rem;
             list-style: none;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        #faq summary::after {
-            content: '+';
-            position: absolute;
-            right: 10px;
-            font-size: 1.2em;
-            color: #333;
-        }
-
-        #faq details[open] summary::after {
-            content: '-';
-        }
-
-        #faq details p {
-            padding: 10px;
             margin: 0;
         }
 
-        /* Center Get NaloxNow Image */
-        #download .heading {
-            text-align: center;
+        #menu li {
+            margin: 0 1rem;
         }
 
-        #download .heading img {
-            display: block;
-            margin: 0 auto;
-            max-width: 100%;
-            /* Make the image responsive */
-            height: auto;
-            /* Maintain aspect ratio */
-        }
-
-        /* Report Button */
-        .report-button {
-            display: block;
-            padding: 10px 20px;
-            font-size: 1em;
-            border-radius: 5px;
-            background-color: #3498db;
-            /* Blue color */
-            color: white;
+        #menu a {
+            color: var(--text-primary);
             text-decoration: none;
-            /* Remove underline */
-            cursor: pointer;
-            margin-top: 10px;
-            /* Add some space */
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .report-button:hover {
-            background-color: #2980b9;
-            /* Darker blue on hover */
+        #menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
+            transition: left 0.5s;
         }
 
-        /* Red Find Button */
-        .find-button {
-            display: block;
-            padding: 10px 20px;
-            font-size: 1em;
-            border-radius: 5px;
-            background-color: #D32F2F;
-            /* Red color */
-            color: white;
-            text-decoration: none;
-            /* Remove underline */
-            cursor: pointer;
-            margin-top: 10px;
-            /* Add some space */
+        #menu a:hover::before {
+            left: 100%;
         }
 
-        .find-button:hover {
-            background-color: #B71C1C;
-            /* Darker red on hover */
+        #menu a:hover {
+            color: var(--primary-color);
+            background: rgba(37, 99, 235, 0.05);
+            transform: translateY(-2px);
         }
 
-        /* Lead Content Adjustments */
+        .chatbot-link {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)) !important;
+            color: white !important;
+            box-shadow: var(--shadow-md);
+        }
+
+        .chatbot-link:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color)) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: var(--shadow-lg) !important;
+        }
+
+        /* Logo Container */
+        #logo-container {
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        #logo-container img {
+            height: 40px;
+            width: auto;
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
+        }
+
+        #logo-container img:hover {
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+
+        /* Hero Section - IMPROVED CENTERING */
+        #lead {
+            min-height: 100vh;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            padding: 0;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        #lead::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('images/lead-bg.jpg') center/cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        #lead::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(220, 38, 38, 0.8));
+            z-index: 2;
+        }
+
         #lead-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
+            justify-content: center;
         }
 
-        #lead-content a {
-            margin-bottom: 10px;
-            width: fit-content;
-            /* Adjust width to content */
+        #lead-content h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out;
+            letter-spacing: -2px;
+            line-height: 1.1;
         }
 
-        #logo-container {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: white;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
-            /* Center the images horizontally */
+        #lead-content h2 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.2s both;
+            max-width: 700px;
+        }
+
+        .hero-buttons {
             display: flex;
-            flex-direction: column;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.4s both;
+            margin-top: 1rem;
         }
 
-        /* New styles for chatbot */
-        #menu li a.chatbot-link {
-            background-color: white;
-            /* Green background */
-            color: #3498DB;
-            /* White text */
-            border-radius: 5px;
-            /* Rounded corners */
-            padding: 10px 15px;
-            /* Padding for better appearance */
+        .btn-hero {
+            padding: 1.25rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            white-space: nowrap;
         }
 
-        #menu li a.chatbot-link:hover {
-            /* background-color:; */
-            /* Darker green on hover */
+        .btn-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-hero:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary-hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+            color: white;
+        }
+
+        .btn-secondary-hero {
+            background: linear-gradient(135deg, var(--secondary-color), var(--secondary-dark));
+            color: white;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+            color: white;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-alt {
+            background: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            position: relative;
+            color: var(--text-primary);
+        }
+
+        .heading::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        #about {
+            padding: 5rem 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .feature-list li:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-list i {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            width: 40px;
+            text-align: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Workflow Section */
+        #experience {
+            background: var(--bg-light);
+            padding: 5rem 0;
+        }
+
+        .workflow-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .workflow-step {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .workflow-step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .workflow-step:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-md);
+        }
+
+        .step-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .step-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .step-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .step-content li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .step-content li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Download Section */
+        #download {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+        }
+
+        .download-container {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .download-container h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+        .download-container p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem 2.5rem;
+            background: white;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 1rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+            color: var(--primary-color);
+        }
+
+        .download-btn i {
+            font-size: 2rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 5rem 0;
+            background: var(--bg-light);
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-content p {
+            margin: 0;
+        }
+
+        .back-to-top {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Menu */
+        #mobile-menu-open {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1001;
+            background: white;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+        }
+
+        #mobile-menu-close {
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #menu {
+                display: none;
+            }
+
+            #mobile-menu-open {
+                display: block;
+            }
+
+            #lead-content h1 {
+                font-size: 3rem;
+                letter-spacing: -1px;
+            }
+
+            #lead-content h2 {
+                font-size: 1.1rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .btn-hero {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .workflow-step {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .step-number {
+                margin: 0 auto 1rem;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            #logo-container {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            #lead-content {
+                padding: 1rem;
+            }
+
+            #lead-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .heading {
+                font-size: 2rem;
+            }
+
+            .btn-hero {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            #about .container > div {
+                flex-direction: column !important;
+            }
+            #about .container > div > div {
+                min-width: 0 !important;
+                width: 100% !important;
+            }
+            #about .container img {
+                margin-top: 2rem;
+                max-width: 100% !important;
+            }
+        }
+
+        /* Additional centering for very large screens */
+        @media (min-width: 1400px) {
+            #lead-content h1 {
+                font-size: 5rem;
+            }
+            
+            #lead-content h2 {
+                font-size: 1.6rem;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div id="mobile-menu-open" class="shadow-large">
-        <i class="fa fa-bars" aria-hidden="true"></i>
+    <!-- Mobile Menu Toggle -->
+    <div id="mobile-menu-open">
+        <i class="fas fa-bars"></i>
     </div>
-    <!-- End #mobile-menu-toggle -->
+
+    <!-- Header -->
     <header>
         <div id="mobile-menu-close">
-            <span>Close</span> <i class="fa fa-times" aria-hidden="true"></i>
+            <span>Close</span> <i class="fas fa-times"></i>
         </div>
-        <ul id="menu" class="shadow">
-            <li>
-                <a href="#about">About</a>
-            </li>
-            <li>
-                <a href="#experience">Features</a>
-            </li>
-            <li>
-                <a href="#download">Download</a>
-            </li>
-            <li>
-                <a href="chatbot.html" target="_blank" class="chatbot-link">Chatbot</a>
-            </li>
-            <li>
-                <a href="#contact">Contact</a>
-            </li>
+        <ul id="menu">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Features</a></li>
+            <li><a href="#download">Download</a></li>
+            <li><a href="chatbot.html" target="_blank" class="chatbot-link">
+                <i class="fas fa-robot"></i> AI Assistant
+            </a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
         <div id="logo-container">
             <img src="images/NaloxNow.png" alt="NaloxNow Logo">
@@ -321,178 +822,212 @@
             <img src="images/orkes.png" alt="Orkes">
         </div>
     </header>
-    <!-- End header -->
 
+    <!-- Hero Section -->
     <div id="lead">
         <div id="lead-content">
             <h1>NaloxNow</h1>
-            <h2>Helping Canadians combat the opioid crisis with real-time naloxone kit mapping, emergency navigation, and AI-powered overdose response.</h2>
-            <a href="report.html" class="report-button">REPORT NALOXONE KITS NEAR ME</a>
-            <a href="maps.html" class="find-button">Find Naloxone Kit Near Me</a>
+            <h2>Empowering Canadians to combat the opioid crisis with real-time naloxone kit mapping, emergency navigation, and AI-powered overdose response guidance.</h2>
+            <div class="hero-buttons">
+                <a href="report.html" class="btn-hero btn-primary-hero">
+                    <i class="fas fa-plus-circle"></i>
+                    Report Naloxone Kits
+                </a>
+                <a href="maps.html" class="btn-hero btn-secondary-hero">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Find Kits Near Me
+                </a>
+            </div>
         </div>
-        <!-- End #lead-content -->
-
-        <div id="lead-overlay"></div>
-
-        <div id="lead-down">
-            <span>
-                <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            </span>
-        </div>
-        <!-- End #lead-down -->
+        <!-- White divider at the bottom of hero -->
+        <div style="position:absolute;left:0;right:0;bottom:0;height:48px;background:linear-gradient(to bottom,rgba(255,255,255,0.0),#fff 90%);z-index:2;"></div>
     </div>
-    <!-- End #lead -->
-    <div id="about">
+
+    <!-- About Section -->
+    <div id="about" class="section" style="margin-top: 0; margin-bottom: 4rem; background: #f9fafb; position: relative; z-index: 3;">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2 class="heading">Why NaloxNow?</h2>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                        NaloxNow is designed to address one of Canada’s most urgent public health challenges. By providing real-time access to naloxone kits, the app empowers communities to take action, reduce harm, and save lives.
-                    </p>
-                    <ul>
-                        <li>Supporting At-Risk Individuals – Rapid access to emergency resources for those in need.</li>
-                        <li>Emergency Navigation – Find and reach naloxone kits quickly during a crisis.</li>
-                        <li>AI-Powered Assistance – Get real-time guidance on overdose response.</li>
+            <div style="background: #fff; border-radius: 2rem; box-shadow: 0 6px 32px rgba(0,0,0,0.08); padding: 3rem 2rem; display: flex; flex-wrap: wrap; align-items: center; gap: 2rem; margin-top: 6rem; position: relative; z-index: 3;">
+                <div style="flex: 1 1 350px; min-width: 300px;">
+                    <h2 class="heading animate-on-scroll" style="text-align:left; margin-top:0;">Why NaloxNow?</h2>
+                    <h3 style="font-size:1.5rem; font-weight:700; margin-bottom:1rem;">Life-Saving Technology</h3>
+                    <p style="color:#6b7280; margin-bottom:2rem;">NaloxNow addresses one of Canada's most urgent public health challenges by providing real-time access to naloxone kits, empowering communities to take immediate action during overdose emergencies.</p>
+                    <ul class="feature-list" style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:1rem;">
+                        <li style="display:flex;align-items:center;gap:1rem;background:#fff;border-radius:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.04);padding:1.25rem 1.5rem;">
+                            <i class="fas fa-heart" style="color:var(--accent-color);font-size:1.5rem;"></i>
+                            <span>Supporting At-Risk Individuals – Rapid access to emergency resources</span>
+                        </li>
+                        <li style="display:flex;align-items:center;gap:1rem;background:#fff;border-radius:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.04);padding:1.25rem 1.5rem;">
+                            <i class="fas fa-route" style="color:var(--accent-color);font-size:1.5rem;"></i>
+                            <span>Emergency Navigation – Find and reach naloxone kits quickly</span>
+                        </li>
+                        <li style="display:flex;align-items:center;gap:1rem;background:#fff;border-radius:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.04);padding:1.25rem 1.5rem;">
+                            <i class="fas fa-brain" style="color:var(--accent-color);font-size:1.5rem;"></i>
+                            <span>AI-Powered Assistance – Real-time guidance on overdose response</span>
+                        </li>
+                        <li style="display:flex;align-items:center;gap:1rem;background:#fff;border-radius:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.04);padding:1.25rem 1.5rem;">
+                            <i class="fas fa-users" style="color:var(--accent-color);font-size:1.5rem;"></i>
+                            <span>Community Support – Connect with emergency contacts instantly</span>
+                        </li>
                     </ul>
                 </div>
-                <div class="col-md-4">
-                    <img src="images/homeless.jpg" alt="Homeless person" style="width: 100%; height: auto;">
+                <div style="flex: 1 1 350px; min-width: 300px; display:flex; justify-content:center; align-items:center;">
+                    <img src="images/homeless.jpg" alt="Community support" style="width:100%; max-width:400px; border-radius:1.5rem; box-shadow:0 4px 24px rgba(0,0,0,0.10);">
                 </div>
             </div>
         </div>
     </div>
-    <!-- End #about -->
-    <div id="experience" class="background-alt">
-        <h2 class="heading">Emergency Button Workflow</h2>
-        <div id="experience-timeline">
-            <div class="workflow-step">
-                <div class="step-number">1</div>
-                <h3 class="step-title">User Triggers Emergency Alert</h3>
-                <p><strong>Action:</strong> The user presses the "Need Help Now" button in the app.</p>
-                <ul>
-                    <li>App retrieves the user's live location via GPS.</li>
-                    <li>A confirmation pop-up appears (optional, if accidental press needs to be avoided).</li>
-                    <li>The app immediately sends data to Google Workflows to begin the emergency process.</li>
-                </ul>
-            </div>
 
-            <div class="workflow-step">
-                <div class="step-number">2</div>
-                <h3 class="step-title">Contact Emergency Contacts</h3>
-                <p><strong>Action:</strong> Google Workflows sends an automated alert to all of the user’s saved
-                    emergency contacts.</p>
-                <ul>
-                    <li>A text message (SMS) &amp; email is sent to pre-saved emergency contacts with:
-                        <ul>
-                            <li>Live GPS location link</li>
-                            <li>Message: "[User's Name] has triggered an emergency alert and may need immediate
-                                assistance. Click the link for their real-time location."</li>
-                        </ul>
-                    </li>
-                    <li>Optional: Push notification to contacts who also have the NaloxNow app.</li>
-                </ul>
-            </div>
-
-            <div class="workflow-step">
-                <div class="step-number">3</div>
-                <h3 class="step-title">Call 911 &amp; Share Live Location</h3>
-                <p><strong>Action:</strong> The app automatically dials 911 and shares the user's location.</p>
-                <ul>
-                    <li>A Google Cloud Function triggers an automated voice call to 911.</li>
-                    <li>Text-to-speech message plays:
-                        <ul>
-                            <li>"This is an automated emergency alert from the NaloxNow app. A user has triggered an
-                                overdose alert at [live location]. Please send immediate assistance."</li>
-                        </ul>
-                    </li>
-                    <li>If the user cannot speak, the dispatcher already has the live location link.</li>
-                </ul>
-            </div>
-
-            <div class="workflow-step">
-                <div class="step-number">4</div>
-                <h3 class="step-title">Display On-Screen Overdose Response Guidance</h3>
-                <p><strong>Action:</strong> The app provides immediate, step-by-step instructions on how to handle an
-                    overdose situation.</p>
-                <ul>
-                    <li>The AI Chatbot opens automatically and provides:
-                        <ul>
-                            <li>Naloxone usage instructions</li>
-                            <li>Basic first-aid steps</li>
-                            <li>What to do while waiting for help</li>
-                        </ul>
-                    </li>
-                    <li>If others are nearby, they can follow the steps while help arrives.</li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-    <!-- End #experience -->
-
-    <div id="download">
+    <!-- Workflow Section -->
+    <div id="experience" class="section section-alt" style="margin-bottom: 4rem; padding-top: 2.5rem;">
         <div class="container">
-            <div class="text-side">Get NaloxNow</div>
-            <div class="buttons-side">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <a href="#" class="download-btn shadow-large">
-                            <i class="fa fa-apple"></i>
-                            <span>Download for iOS</span>
-                        </a>
-                    </div>
-                    <div class="col-sm-6">
-                        <a href="#" class="download-btn shadow-large">
-                            <i class="fa fa-android"></i>
-                            <span>Download for Android</span>
-                        </a>
-                    </div>
+            <h2 class="heading animate-on-scroll" style="margin-bottom:2.5rem; font-size:2.5rem; font-weight:900; text-align:center; background: #fff; display:inline-block; padding:0.5rem 2.5rem; border-radius:1.5rem; box-shadow:0 2px 12px rgba(0,0,0,0.04); border-bottom: 3px solid var(--primary-color); color: var(--primary-color);">Emergency Button Workflow</h2>
+            <div style="max-width: 900px; margin: 0 auto;">
+                <!-- Step 1 -->
+                <div style="background: #fff; border-radius: 1.25rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 2rem 2.5rem; margin-bottom: 2.5rem;">
+                    <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">1. User Triggers Emergency Alert</h3>
+                    <div style="font-weight: 600; color: var(--primary-color); margin-bottom: 0.5rem;">Action: <span style="font-weight:400; color: #374151;">The user presses the "Need Help Now" button in the app.</span></div>
+                    <ul style="margin-left: 1.5rem;">
+                        <li>App retrieves the user's live location via GPS.</li>
+                        <li>A confirmation pop-up appears (optional, if accidental press needs to be avoided).</li>
+                        <li>The app immediately sends data to Google Workflows to begin the emergency process.</li>
+                    </ul>
+                </div>
+                <!-- Step 2 -->
+                <div style="background: #fff; border-radius: 1.25rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 2rem 2.5rem; margin-bottom: 2.5rem;">
+                    <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">2. Contact Emergency Contacts</h3>
+                    <div style="font-weight: 600; color: var(--primary-color); margin-bottom: 0.5rem;">Action: <span style="font-weight:400; color: #374151;">Google Workflows sends an automated alert to all of the user's saved emergency contacts.</span></div>
+                    <ul style="margin-left: 1.5rem;">
+                        <li>A text message (SMS) &amp; email is sent to pre-saved emergency contacts with:
+                            <ul style="margin-left: 1.5rem;">
+                                <li>Live GPS location link</li>
+                                <li>Message: "[User's Name] has triggered an emergency alert and may need immediate assistance. Click the link for their real-time location."</li>
+                            </ul>
+                        </li>
+                        <li>Optional: Push notification to contacts who also have the NaloxNow app.</li>
+                    </ul>
+                </div>
+                <!-- Step 3 -->
+                <div style="background: #fff; border-radius: 1.25rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 2rem 2.5rem; margin-bottom: 2.5rem;">
+                    <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">3. Call 911 &amp; Share Live Location</h3>
+                    <div style="font-weight: 600; color: var(--primary-color); margin-bottom: 0.5rem;">Action: <span style="font-weight:400; color: #374151;">The app automatically dials 911 and shares the user's location.</span></div>
+                    <ul style="margin-left: 1.5rem;">
+                        <li>A Google Cloud Function triggers an automated voice call to 911.</li>
+                        <li>Text-to-speech message plays:
+                            <ul style="margin-left: 1.5rem;">
+                                <li>"This is an automated emergency alert from the NaloxNow app. A user has triggered an overdose alert at [live location]. Please send immediate assistance."</li>
+                            </ul>
+                        </li>
+                        <li>If the user cannot speak, the dispatcher already has the live location link.</li>
+                    </ul>
+                </div>
+                <!-- Step 4 -->
+                <div style="background: #fff; border-radius: 1.25rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 2rem 2.5rem; margin-bottom: 0;">
+                    <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">4. Display On-Screen Overdose Response Guidance</h3>
+                    <div style="font-weight: 600; color: var(--primary-color); margin-bottom: 0.5rem;">Action: <span style="font-weight:400; color: #374151;">The app provides immediate, step-by-step instructions on how to handle an overdose situation.</span></div>
+                    <ul style="margin-left: 1.5rem;">
+                        <li>The AI Chatbot opens automatically and provides:
+                            <ul style="margin-left: 1.5rem;">
+                                <li>Naloxone usage instructions</li>
+                                <li>Basic first-aid steps</li>
+                                <li>What to do while waiting for help</li>
+                            </ul>
+                        </li>
+                        <li>If others are nearby, they can follow the steps while help arrives.</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-    <!-- End #download -->
 
-    <div id="contact">
-        <h2 class="heading">Get in Touch</h2>
-        <div id="contact-form">
-            <form method="POST" action="https://formspree.io/f/xbldelbb">
-                <input type="hidden" name="_subject" value="Contact request from personal website" />
-                <input type="email" name="_replyto" placeholder="Your email" required>
-                <textarea name="message" placeholder="Your message" required></textarea>
-                <button type="submit">Send</button>
-            </form>
+    <!-- Download Section -->
+    <div id="download" class="section">
+        <div class="container">
+            <h2 class="heading animate-on-scroll">Download the App</h2>
+            <div class="download-container">
+                <h3>Available on iOS and Android</h3>
+                <p>Get the NaloxNow app today and start saving lives!</p>
+                <div class="download-buttons">
+                    <a href="https://itunes.apple.com/ca/app/naloxnow/id1554444444" class="download-btn">
+                        <i class="fab fa-apple"></i>
+                        Download on the App Store
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.naloxnow" class="download-btn">
+                        <i class="fab fa-google-play"></i>
+                        Get it on Google Play
+                    </a>
+                </div>
+            </div>
         </div>
-        <!-- End #contact-form -->
     </div>
-    <!-- End #contact -->
 
+    <!-- Contact Section -->
+    <div id="contact" class="section" style="margin-bottom: 4rem;">
+        <div class="container">
+            <h2 class="heading animate-on-scroll" style="margin-bottom:2.5rem;">Contact Us</h2>
+            <div class="contact-container" style="max-width: 500px; margin: 0 auto; background: #fff; border-radius: 1.5rem; box-shadow: 0 4px 24px rgba(0,0,0,0.10); padding: 2.5rem 2rem;">
+                <form id="contact-form" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label for="name" style="font-weight: 600; color: #222;">Name</label>
+                        <input type="text" id="name" name="name" required style="border: none; background: #f3f4f6; border-radius: 0.75rem; padding: 1rem 1.25rem; font-size: 1rem; outline: none; transition: box-shadow 0.2s; box-shadow: 0 1px 2px rgba(0,0,0,0.03);">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label for="email" style="font-weight: 600; color: #222;">Email</label>
+                        <input type="email" id="email" name="email" required style="border: none; background: #f3f4f6; border-radius: 0.75rem; padding: 1rem 1.25rem; font-size: 1rem; outline: none; transition: box-shadow 0.2s; box-shadow: 0 1px 2px rgba(0,0,0,0.03);">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label for="message" style="font-weight: 600; color: #222;">Message</label>
+                        <textarea id="message" name="message" required rows="4" style="border: none; background: #f3f4f6; border-radius: 0.75rem; padding: 1rem 1.25rem; font-size: 1rem; outline: none; resize: vertical; min-height: 100px; transition: box-shadow 0.2s; box-shadow: 0 1px 2px rgba(0,0,0,0.03);"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit" style="background: linear-gradient(90deg, #2563eb, #1d4ed8); color: #fff; font-weight: 700; font-size: 1.15rem; border: none; border-radius: 1rem; padding: 1rem 0; margin-top: 0.5rem; box-shadow: 0 2px 8px rgba(37,99,235,0.10); transition: background 0.2s, box-shadow 0.2s; cursor: pointer; width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="row">
-                <div class="col-sm-5 copyright">
-                    <p>
-                        Copyright &copy; <span id="current-year">2025</span> NaloxNow
-                    </p>
+            <div class="footer-content">
+                <div>
+                    <h3>About Us</h3>
+                    <p>NaloxNow is a project by Hack Canada, a team of passionate developers and health professionals dedicated to saving lives.</p>
                 </div>
-                <div class="col-sm-2 top">
-                    <span id="to-top">
-                        <i class="fa fa-chevron-up" aria-hidden="true"></i>
-                    </span>
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#experience">Features</a></li>
+                        <li><a href="#download">Download</a></li>
+                        <li><a href="chatbot.html" target="_blank">AI Assistant</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
                 </div>
-                <div class="col-sm-5 social">
-                    <!-- Removed social media icons -->
+                <div>
+                    <h3>Contact</h3>
+                    <p>Email: info@naloxnow.com</p>
+                    <p>Phone: 1-800-555-5555</p>
                 </div>
+            </div>
+            <div class="back-to-top">
+                <a href="#top">Back to Top</a>
             </div>
         </div>
     </footer>
-    <!-- End footer -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/scripts.min.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-open').addEventListener('click', function() {
+            document.getElementById('mobile-menu-close').style.display = 'block';
+            document.getElementById('mobile-menu-open').style.display = 'none';
+            document.getElementById('menu').style.display = 'flex';
+        });
+
+        document.getElementById('mobile-menu-close').addEventListener('click', function() {
+            document.getElementById('mobile-menu-close').style.display = 'none';
+            document.getElementById('mobile-menu-open').style.display = 'block';
+            document.getElementById('menu').style.display = 'none';
+        });
+    </script>
 </body>
 
 </html>
