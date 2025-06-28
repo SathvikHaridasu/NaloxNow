@@ -583,17 +583,18 @@
 
         /* Footer */
         footer {
-            background: var(--text-primary);
-            color: white;
-            padding: 3rem 0 1rem;
+            background: #18181b;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid #23232a;
         }
 
         .footer-content {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
+            gap: 1rem;
         }
 
         .footer-content p {
@@ -985,32 +986,20 @@
     </div>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div>
-                    <h3>About Us</h3>
-                    <p>NaloxNow is a project by Hack Canada, a team of passionate developers and health professionals dedicated to saving lives.</p>
-                </div>
-                <div>
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#experience">Features</a></li>
-                        <li><a href="#download">Download</a></li>
-                        <li><a href="chatbot.html" target="_blank">AI Assistant</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Contact</h3>
-                    <p>Email: info@naloxnow.com</p>
-                    <p>Phone: 1-800-555-5555</p>
-                </div>
+    <footer style="background: #18181b; color: #fff; padding: 2rem 0; text-align: center; border-top: 1px solid #23232a;">
+        <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+            <!-- Optional: Add a small logo here -->
+            <!-- <img src="images/NaloxNow.png" alt="NaloxNow Logo" style="height: 36px; margin-bottom: 0.5rem;"> -->
+            <div style="font-size: 1.05rem; opacity: 0.85;">&copy; <span id="current-year">2025</span> NaloxNow. All rights reserved.</div>
+            <!-- Optional: Quick links -->
+            <!--
+            <div style="margin-top: 0.5rem;">
+                <a href="#about" style="color: #a1a1aa; margin: 0 1rem; text-decoration: none;">About</a>
+                <a href="#experience" style="color: #a1a1aa; margin: 0 1rem; text-decoration: none;">Features</a>
+                <a href="#download" style="color: #a1a1aa; margin: 0 1rem; text-decoration: none;">Download</a>
+                <a href="#contact" style="color: #a1a1aa; margin: 0 1rem; text-decoration: none;">Contact</a>
             </div>
-            <div class="back-to-top">
-                <a href="#top">Back to Top</a>
-            </div>
+            -->
         </div>
     </footer>
 
